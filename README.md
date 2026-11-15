@@ -1,8 +1,10 @@
 > Actualización 15-11-2026: empieza por [LEEME_PRIMERO.md](LEEME_PRIMERO.md). Publicación: [PUBLICAR_GRATIS.md](PUBLICAR_GRATIS.md).
 
-> Uso previsto: **prueba bajo demanda para el jurado**, sin servicio permanente. Guion y preparación: [docs/ENTREGA_JURADO.md](docs/ENTREGA_JURADO.md). Contraste con OrbitLens: [docs/CONTRASTE_ORBITLENS.md](docs/CONTRASTE_ORBITLENS.md). El código se conserva en un [repositorio privado](https://github.com/12FOCUS21/planet-x-explorer); **no existe una URL pública de la aplicación**.
+> Uso previsto: **prueba bajo demanda para el jurado**, sin servicio permanente. Guion y preparación: [docs/ENTREGA_JURADO.md](docs/ENTREGA_JURADO.md). Contraste con OrbitLens: [docs/CONTRASTE_ORBITLENS.md](docs/CONTRASTE_ORBITLENS.md). El código se conserva en un [repositorio público](https://github.com/12FOCUS21/planet-x-explorer); **no existe una URL pública de la aplicación**.
 
 # Planet X Explorer
+
+**Para preparar un video:** [guía completa y guion escena por escena](docs/GUIA_COMPLETA_VIDEO.md).
 
 **Plataforma web educativa para explorar y comparar observaciones infrarrojas de SPHEREx (NASA/IPAC IRSA), con modo demostración sin Internet.**
 

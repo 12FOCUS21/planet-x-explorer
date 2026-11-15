@@ -1,12 +1,12 @@
 # Prueba del jurado bajo demanda (0 USD)
 
-**Aún no hay servicio ni URL públicos de Planet X Explorer.** Para una demostración
+**Aún no hay servicio ni URL pública de la aplicación Planet X Explorer.** Para una demostración
 presencial o por pantalla compartida basta con `INICIAR_WINDOWS.bat` y el modo
 Demo; apágalo con Ctrl+C. Para que un examinador remoto abra un enlace propio,
 se necesita hosting. Render Free es una **opción de prueba**, no alojamiento
 persistente ni garantía de disponibilidad. No elijas un servicio de pago.
 
-1. El [repositorio GitHub privado](https://github.com/12FOCUS21/planet-x-explorer)
+1. El [repositorio GitHub público](https://github.com/12FOCUS21/planet-x-explorer)
    contiene `backend`, `frontend` y `render.yaml` en la raíz. No incluye `.venv`,
    `.env`, `data/cache`, archivos personales ni el ZIP. **Crear el repositorio
    no autoriza por sí solo publicar la aplicación como servicio.**

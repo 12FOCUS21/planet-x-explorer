@@ -1,5 +1,9 @@
 # Guion de prueba para examinadores (sin servicio permanente)
 
+Para explicar objetivo, funcionamiento y límites en una grabación, ver
+[GUIA_COMPLETA_VIDEO.md](GUIA_COMPLETA_VIDEO.md). Es un guion de preparación;
+no significa que el video ya esté grabado.
+
 ## Si estás en el mismo equipo o compartes pantalla
 
 1. Una sola vez: Python 3.12, Internet para instalar `backend/requirements.txt`.
@@ -26,8 +30,8 @@
 ## Si el jurado necesita abrir una URL desde fuera
 
 Lee [PUBLICAR_GRATIS.md](../PUBLICAR_GRATIS.md). Con presupuesto 0 USD se puede
-probar Render Free **solo si el equipo autoriza un repositorio y cuenta de
-hosting**. La instancia puede dormir y arrancar lentamente; no almacena
+probar Render Free **solo si el equipo autoriza una cuenta de hosting y el
+despliegue**. La instancia puede dormir y arrancar lentamente; no almacena
 resultados de forma persistente. Publicar con margen, abrir el enlace en una
 ventana privada y repetir el recorrido completo antes de enviarlo. Mantener un
 plan local por pantalla compartida si falla el proveedor gratuito. No compartir
@@ -65,7 +69,7 @@ probados; se revisó también el desbordamiento en anchuras 360–1440 px.
 No se probó teléfono físico. Ver
 [CONTRASTE_ORBITLENS.md](CONTRASTE_ORBITLENS.md) para pendientes y comparación.
 
-**El código de Planet X Explorer tiene un repositorio GitHub privado separado de
+**El código de Planet X Explorer tiene un repositorio GitHub público separado de
 OrbitLens, pero la aplicación no tiene URL pública ni despliegue.** Para dar
 acceso remoto al jurado, el equipo debe autorizar hosting y una prueba externa.
 El repositorio no incluye cachés FITS, `.venv` ni `frontend/node_modules/`.
