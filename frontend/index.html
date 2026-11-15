@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f3f5f7">
+  <meta name="description" content="Planet X Explorer: compara observaciones infrarrojas con una demostración sintética o consulta datos SPHEREx de NASA/IPAC IRSA bajo demanda.">
+  <title>Planet X Explorer — Explora, compara, comprende</title>
+  <link rel="icon" href="/static/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/styles.css?v=20261115-reliable">
+  <link rel="stylesheet" href="/static/css/editorial-gallery.css?v=20261115-final">
+  <link rel="stylesheet" href="/static/css/observatory-premium.css?v=20261115-signature">
+  <link rel="stylesheet" href="/static/css/accessibility.css?v=20261115-a11y">
+  <link rel="stylesheet" href="/static/css/product-experience.css?v=20261116">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Navegación principal">
+      <a class="brand" href="#overview" data-nav="overview">
+        <span class="brand-symbol" aria-hidden="true"><span class="brand-orbit"></span><span class="brand-core"></span></span>
+        <span class="brand-text"><strong>PLANET<span>X</span></strong><small>EXPLORER / LAB</small></span>
+      </a>
+      <div class="sidebar-content">
+        <div class="nav-label">NAVEGACIÓN</div>
+        <nav class="main-nav">
+          <button class="nav-item active" data-view="overview"><span class="ico">01</span><span>Inicio</span><span class="nav-dot"></span></button>
+          <button class="nav-item" data-view="explorer"><span class="ico">02</span><span>Observaciones</span></button>
+          <button class="nav-item" data-view="detection"><span class="ico">03</span><span>Análisis de cambios</span></button>
+        </nav>
+        <div class="nav-label nav-secondary">INVESTIGACIÓN</div>
+        <nav class="main-nav">
+          <button class="nav-item" data-view="academy"><span class="ico">04</span><span>Aprendizaje</span><span class="nav-new">NEW</span></button>
+          <button class="nav-item" data-view="sources"><span class="ico">05</span><span>Fuentes y método</span></button>
+        </nav>
+        <div class="sidebar-spotlight">
+          <span class="spotlight-kicker"><i class="small-spark">✦</i> MISIÓN CIENTÍFICA</span>
+          <div class="spotlight-planet"><span></span></div>
+          <strong>Lo desconocido está más allá.</strong>
+          <p>Investiga el cielo infrarrojo. Cada observación cuenta.</p>
+          <button class="text-link" data-goto="explorer">Iniciar exploración <span>↗</span></button>
+        </div>
+      </div>
+      <div class="side-bottom"><div class="status-circle"></div><div><strong>API disponible</strong><small>IRSA se consulta bajo demanda</small></div></div>
+    </aside>
+
+    <div class="main-shell">
+      <header class="topbar">
+        <div class="topbar-left"><button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-controls="sidebar" aria-expanded="false">☰</button><span class="crumb-root">PLANET X / OBSERVATORIO</span><span class="crumb-slash">/</span><span id="breadcrumb">Vista general</span></div>
+        <div class="topbar-right"><div class="system-status"><span class="online-pulse"></span><span id="apiStatus">Conectando...</span></div><span class="top-divider"></span><span class="top-tag real" id="globalModeTag">IRSA · sin consultar</span><span class="profile-avatar" title="Planet X Explorer">PX</span></div>
+      </header>
+      <main class="main-content">
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+        <!-- DASHBOARD -->
+        <section id="view-overview" class="view active" aria-label="Vista general">
+          <div class="page-eyebrow"><span class="eyebrow-line"></span> OBSERVATORIO INTERACTIVO <span class="eyebrow-separator">/</span> UNA EXPERIENCIA PARA EXPLORAR</div>
+          <div class="overview-hero">
+            <canvas id="heroStars" aria-hidden="true"></canvas>
+            <div class="hero-content"><div class="hero-kicker"><span class="hero-kicker-star">✦</span> PLANET X EXPLORER <span class="hero-kicker-divider">/</span> LABORATORIO ABIERTO</div>
+              <h1>Explora el cielo.<br><em>Entiende el cambio.</em></h1>
+              <p>Elige una región, compara dos épocas y examina sus diferencias. Empieza con una simulación guiada o consulta observaciones SPHEREx de NASA/IPAC IRSA.</p>
+              <div class="hero-actions"><button class="btn btn-primary" data-demo-start>Probar demo guiada <span aria-hidden="true">↗</span></button><button class="btn btn-glass" data-real-start>Explorar datos IRSA <span aria-hidden="true">→</span></button></div>
+              <div class="hero-footnote"><span class="tiny-dot"></span> Demo sin Internet · IRSA bajo demanda · Sin detecciones confirmadas</div>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+              <canvas id="orbit3d"></canvas>
+              <div class="visual-ring ring-1"></div><div class="visual-ring ring-2"></div><div class="visual-ring ring-3"></div>
+              <div class="visual-planet"></div><div class="visual-planet-shadow"></div>
+              <span class="orbit-speck speck-1"></span><span class="orbit-speck speck-2"></span><span class="orbit-speck speck-3"></span>
+              <div class="visual-legend"><span class="legend-ping"></span> ILUSTRACIÓN 3D · NO ES UNA OBSERVACIÓN</div>
+            </div>
+          </div>
+          <div class="route-intro"><div><p class="overline">DOS FORMAS DE EMPEZAR</p><h2>Elige tu recorrido.</h2></div><p>El mismo comparador, con procedencias claramente separadas. Ninguna señal constituye una detección de Planeta X.</p></div>
+          <div class="route-grid">
+            <article class="route-card route-demo"><div class="route-card-top"><span class="route-index">01 / RECOMENDADO PARA LA PRUEBA</span><span class="route-status">SIN CONEXIÓN</span></div><div><span class="route-symbol" aria-hidden="true">◌</span><h3>Ensaya el método</h3><p>Cuatro épocas sintéticas reproducibles. Comprueba el recorrido completo sin depender de ningún archivo externo.</p></div><button class="route-action" data-demo-start>Iniciar demostración <span aria-hidden="true">↗</span></button></article>
+            <article class="route-card route-real"><div class="route-card-top"><span class="route-index">02 / CONSULTA EXTERNA</span><span class="route-status">BAJO DEMANDA</span></div><div><span class="route-symbol" aria-hidden="true">✳</span><h3>Consulta el archivo</h3><p>Busca metadatos SPHEREx en IRSA y, si hay un par por metadatos, solicita sus recortes FITS. La disponibilidad puede variar.</p></div><button class="route-action" data-real-start>Abrir búsqueda IRSA <span aria-hidden="true">↗</span></button></article>
+          </div>
+          <div class="section-heading"><div><p class="overline">EXPLORA EL ARCHIVO / GALERÍA VISUAL</p><h2>Una mirada más allá <span class="heading-spark">↗</span></h2></div><button class="subtle-action" data-goto="explorer">Abrir explorador <span>↗</span></button></div>
+          <div class="home-columns">
+          <div class="panel home-sky-panel"><div class="panel-heading"><div><span class="panel-overline">REGI&#211;N DEL CIELO</span><h3>Horizontes invisibles <span class="mint-dot">&bull;</span></h3></div><span class="pill pill-demo" id="homeImageBadge">ILUSTRACIONES</span></div>
+              <div class="home-sky-collage">
+                <div class="home-sky-wrap"><img id="homePreview" class="home-sky-img" src="/static/assets/infrared-field.jpg" alt="Visualización artística de una nebulosa infrarroja; no representa datos científicos"/><div class="sky-crosshair">+</div><div class="sky-corner sky-corner-tl"></div><div class="sky-corner sky-corner-br"></div><span class="sky-coord" id="homeSkyCoord">Explora el cielo en el explorador</span><span class="sky-overlay-label" id="homeSkyLabel">ARTE CONCEPTUAL · NO ES DATO CIENTÍFICO</span></div>
+                <button type="button" class="editorial-tile" data-goto="explorer"><img src="/static/assets/deep-field.jpg" alt="" loading="lazy"><span class="editorial-tile-label"><small>01 / ILUSTRACIÓN</small><strong>Campos profundos</strong><span>Explorar datos ↗</span></span></button>
+                <button type="button" class="editorial-tile" data-goto="academy"><img src="/static/assets/stellar-nursery.jpg" alt="" loading="lazy"><span class="editorial-tile-label"><small>02 / ARTE CONCEPTUAL</small><strong>Nuevos horizontes</strong><span>Aprender más ↗</span></span></button>
+              </div>
+              <div class="home-sky-bottom"><span id="homeSkySource"><span class="tiny-dot"></span> Ilustraciones de portada; los datos científicos se cargan en el explorador</span><button class="small-cta" data-goto="explorer">Abrir explorador -&gt;</button></div>
+            </div>
+            <div class="panel workflow-panel"><div class="panel-heading"><div><span class="panel-overline">NUESTRO MÉTODO</span><h3>El método detrás de cada señal</h3></div></div>
+              <div class="workflow-list"><div class="workflow-step"><div class="step-index">01</div><div><strong>Selecciona una región</strong><p>Explora coordenadas del cielo con los archivos disponibles.</p></div><span>↗</span></div><div class="workflow-step"><div class="step-index">02</div><div><strong>Compara observaciones</strong><p>Superpone imágenes alineadas de diferentes fechas.</p></div><span>↗</span></div><div class="workflow-step"><div class="step-index">03</div><div><strong>Examina cambios</strong><p>Revisa señales y descarta interpretaciones erróneas.</p></div><span>↗</span></div><div class="workflow-step"><div class="step-index">04</div><div><strong>Construye conocimiento</strong><p>Aprende por qué una detección no es un descubrimiento.</p></div><span>↗</span></div></div>
+              <div class="workflow-note"><span>✳</span><p><strong>Ciencia, no ficción.</strong> La hipótesis del Planeta Nueve todavía no está confirmada.</p></div>
+            </div>
+          </div>
+          <div class="metric-overline">MÉTODO, DATOS Y APRENDIZAJE</div>
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-icon icon-chart">◈</div><span>FUENTES OFICIALES</span><strong>02<span class="stat-small"> redes</span></strong><p>IRSA / SPHEREx + ESA / Gaia</p></div>
+            <div class="stat-card"><div class="stat-icon icon-purple">◎</div><span>ÉPOCAS EN DEMO</span><strong>04<span class="stat-small"> fases</span></strong><p>Serie temporal didáctica</p></div>
+            <div class="stat-card"><div class="stat-icon icon-blue">⌁</div><span>MOTOR DE ANÁLISIS</span><strong>5σ<span class="stat-small"> umbral</span></strong><p>Detección estadística preliminar</p></div>
+            <div class="stat-card"><div class="stat-icon icon-green">✧</div><span>APRENDE CIENCIA</span><strong>03<span class="stat-small"> lecciones</span></strong><p>Con quiz y reto interactivo</p></div>
+          </div>
+        </section>
+
+        <!-- EXPLORER -->
+        <section id="view-explorer" class="view" aria-label="Explorador espacial">
+          <div class="page-title-row"><div><div class="page-eyebrow"><span class="eyebrow-line"></span> ESPACIO DE TRABAJO / 01</div><h1 class="page-title">Explora <span>observaciones.</span></h1><p class="page-subtitle">Tres pasos para entender qué cambia entre dos momentos del cielo.</p></div><div class="page-index">01 / 04</div></div>
+          <div class="journey" aria-label="Progreso de la exploración"><div class="journey-steps"><div class="journey-step is-current" data-step="1" aria-current="step"><span class="journey-num">01</span><span>Buscar observaciones</span></div><div class="journey-step" data-step="2"><span class="journey-num">02</span><span>Comparar épocas</span></div><div class="journey-step" data-step="3"><span class="journey-num">03</span><span>Revisar diferencias</span></div></div><p id="journeyStatus" role="status" aria-live="polite">Paso 1 de 3 · Elige una fuente y busca un campo.</p></div>
+          <div class="panel query-panel"><div class="query-header"><div><span class="panel-overline">PASO 01 / ENCUENTRA UN CAMPO</span><h2>¿Con qué datos quieres empezar?</h2></div><div class="query-mode"><span>FUENTE DE DATOS</span><div class="segmented"><button class="segment" id="modeDemo" aria-pressed="false">Demo sintética</button><button class="segment active real" id="modeReal" aria-pressed="true">NASA / IRSA</button></div></div></div>
+            <p class="mode-explainer" id="modeExplainer">IRSA consulta observaciones reales al pulsar Buscar. Requiere Internet; no se reemplazarán resultados vacíos por imágenes simuladas.</p>
+            <div class="field-label"><span>CAMPOS SUGERIDOS</span><small>Un preset completa las coordenadas; pulsa Buscar para continuar.</small></div>
+            <div class="presets" id="presets"></div>
+            <form id="searchForm" class="search-form"><label>ASCENSIÓN RECTA · RA <span>(°)</span><input name="ra" id="ra" type="number" min="0" max="359.999999" step="any" value="127.69444" required></label><label>DECLINACIÓN · DEC <span>(°)</span><input name="dec" id="dec" type="number" min="-90" max="90" step="any" value="-39.17760" required></label><label>RADIO DE RECORTE <span>(°)</span><input name="radius" id="radius" type="number" min="0.008" max="0.3" step="0.001" value="0.08" required></label><button class="btn btn-primary search-button" id="searchButton" type="submit">Buscar observaciones <span aria-hidden="true">↗</span></button></form>
+            <div class="query-info" id="searchInfo" role="status" aria-live="polite">IRSA busca imágenes que contienen el centro. El radio ajusta el recorte, no amplía la búsqueda ni garantiza cobertura completa.</div>
+            <section class="activity-card" id="searchActivity" hidden aria-label="Estado de la búsqueda"><div class="activity-head"><span class="activity-orbit" aria-hidden="true"><i></i></span><div class="activity-heading"><span class="activity-kicker">BÚSQUEDA · BAJO DEMANDA</span><h3 class="activity-title" aria-live="polite">Preparando búsqueda</h3></div><strong class="activity-value" aria-hidden="true">EN CURSO</strong></div><p class="activity-detail">Esperando una respuesta del servidor.</p><div class="activity-track" role="progressbar" aria-label="Avance de la búsqueda" aria-valuemin="0" aria-valuemax="100"><span class="activity-fill"></span></div><div class="activity-footer"><span>El porcentaje solo aparece al recibir una respuesta.</span><span class="activity-step">Sin estimación de tiempo</span></div></section>
+          </div>
+          <section class="search-summary" id="searchSummary" hidden aria-label="Resultado de la búsqueda"><div class="search-summary-metric"><strong id="summaryCount">0</strong><span id="summaryType">OBSERVACIONES</span></div><div class="search-summary-copy"><h2 id="summaryTitle">Búsqueda completada</h2><p id="summaryDescription"></p></div><button class="btn btn-outline" id="summaryNext" type="button">Elegir épocas <span aria-hidden="true">↗</span></button></section>
+          <div class="comparison-toolbar" id="comparisonStep"><div><p class="overline">PASO 02 / ELIGE DOS ÉPOCAS</p><h2>Comparador temporal</h2><p class="comparison-definition">Época = observación tomada en una fecha. La compatibilidad por metadatos no valida el filtro LVF por píxel.</p></div><div class="comparison-actions"><button class="btn btn-outline" id="runDetectionTop" disabled>Revisar diferencias <span aria-hidden="true">↗</span></button></div></div>
+          <div class="obs-selection"><label><span>&Eacute;POCA A &middot; REFERENCIA</span><select id="obsA"></select></label><div class="versus-label">VS</div><label><span>&Eacute;POCA B &middot; COMPARACI&Oacute;N</span><select id="obsB"></select></label><button class="btn btn-secondary" id="compareBtn">Comparar</button></div>
+          <div id="compareStatus" class="query-info" role="status" aria-live="polite">Selecciona dos observaciones para comparar.</div>
+          <section class="activity-card" id="compareActivity" hidden aria-label="Estado de la comparación"><div class="activity-head"><span class="activity-orbit" aria-hidden="true"><i></i></span><div class="activity-heading"><span class="activity-kicker">COMPARACIÓN · A / B / B − A</span><h3 class="activity-title" aria-live="polite">Preparando comparación</h3></div><strong class="activity-value" aria-hidden="true">EN CURSO</strong></div><p class="activity-detail">El servidor confirmará los pasos de la comparación.</p><div class="activity-track" role="progressbar" aria-label="Hitos confirmados de la comparación" aria-valuemin="0" aria-valuemax="100"><span class="activity-fill"></span></div><div class="activity-footer"><span>Hitos confirmados; no estima el tiempo restante.</span><span class="activity-step">Iniciando</span></div></section>
+          <div class="comparison-placeholder" id="comparisonPlaceholder"><div class="placeholder-icon" aria-hidden="true">◎</div><div><span class="panel-overline">LA VISTA VISUAL AÚN NO ESTÁ PREPARADA</span><h3 id="placeholderTitle">Compara dos épocas para revelar las imágenes.</h3><p id="placeholderDetail">Se mostrarán A, B y el mapa de diferencias cuando prepares una comparación. No se descargan recortes FITS hasta que tú lo solicites.</p></div><span class="placeholder-sequence" aria-hidden="true">A <span>→</span> B <span>→</span> B − A</span></div>
+          <div class="panel science-figure" id="scienceFigure" hidden><div class="figure-heading"><div><p class="panel-overline">COMPARACIÓN / VISTA VISUAL</p><h3>Observaciones A y B, y sus diferencias</h3><p>Las imágenes se muestran en la misma escala para facilitar la comparación.</p></div><span class="preview-badge" id="imageBadge">SIN IMÁGENES</span></div>
+            <div class="three-image-figure">
+              <article class="plot-panel"><header class="plot-title"><div><span class="source-epoch">&Eacute;POCA A &middot; REFERENCIA</span><h4>Imagen A</h4></div><strong id="sourceDateA">Sin cargar</strong></header><div class="plot-axis-layout"><span class="plot-y-label">P&iacute;xel Y</span><div class="plot-data"><img id="imageA" alt="Imagen original de la &eacute;poca A" hidden><div class="plot-empty" id="sourceEmptyA">Selecciona dos &eacute;pocas y pulsa Comparar.</div></div></div><div class="plot-x-label">P&iacute;xel X</div><div class="plot-meta"><span>DETECTOR <strong id="sourceDetectorA">&mdash;</strong></span><span>CANAL <strong id="sourceBandA">&mdash;</strong></span></div></article>
+              <article class="plot-panel"><header class="plot-title"><div><span class="source-epoch">&Eacute;POCA B &middot; COMPARACI&Oacute;N</span><h4>Imagen B</h4></div><strong id="sourceDateB">Sin cargar</strong></header><div class="plot-axis-layout"><span class="plot-y-label">P&iacute;xel Y</span><div class="plot-data"><img id="imageB" alt="Imagen original de la &eacute;poca B" hidden><div class="plot-empty" id="sourceEmptyB">Selecciona dos &eacute;pocas y pulsa Comparar.</div></div></div><div class="plot-x-label">P&iacute;xel X</div><div class="plot-meta"><span>DETECTOR <strong id="sourceDetectorB">&mdash;</strong></span><span>CANAL <strong id="sourceBandB">&mdash;</strong></span></div></article>
+              <article class="plot-panel difference-plot"><header class="plot-title"><div><span class="source-epoch">B &minus; A</span><h4>Diferencias y candidatos</h4></div><span class="difference-key"><i></i> CANDIDATO</span></header><div class="plot-axis-layout"><span class="plot-y-label">P&iacute;xel Y</span><div class="difference-data-wrap"><div class="plot-data difference-data"><img id="imageDiff" alt="Mapa diferencial B menos A" hidden><div class="plot-empty" id="emptyStage">La diferencia aparecer&aacute; aqu&iacute;.</div><div id="candidateOverlay" class="candidate-overlay"></div></div><div class="difference-colorbar"><span>+</span><div class="colorbar-gradient"></div><span>0</span><span>&minus;</span></div></div></div><div class="plot-x-label">P&iacute;xel X</div><div class="plot-meta difference-caption">Azul: disminuye &middot; rojo: aumenta</div></article>
+            </div>
+            <div class="figure-caption"><span><i class="legend-a"></i> &Eacute;poca A: <strong id="compareDateA">&mdash;</strong></span><span><i class="legend-b"></i> &Eacute;poca B: <strong id="compareDateB">&mdash;</strong></span><span>El mapa muestra el residual B &minus; A; las diferencias instrumentales tambi&eacute;n pueden producir cambios.</span></div>
+          </div>
+          <div class="explorer-details-grid" id="explorerDetails" hidden><div class="panel field-info"><div class="panel-heading"><div><span class="panel-overline">DETALLES DE LA COMPARACIÓN</span><h3>Datos del campo</h3></div></div><div class="field-rows"><div><span>FUENTE</span><strong id="fieldSource">Aún sin comparar</strong></div><div><span>DETECTOR</span><strong id="fieldDetector">&mdash;</strong></div><div><span>SUPERPOSICI&Oacute;N WCS</span><strong id="fieldOverlap">&mdash;</strong></div><div><span>P&Iacute;XELES V&Aacute;LIDOS</span><strong id="fieldPixels">&mdash;</strong></div></div><div class="gaia-widget"><button class="btn btn-outline" id="gaiaBtn">Consultar estrellas Gaia DR3</button><p id="gaiaInfo">Cat&aacute;logo externo de ESA; no confirma candidatos.</p></div></div><div class="panel explorer-help"><span class="ex-help-icon">&#10024;</span><h3>&iquest;Qu&eacute; est&aacute;s observando?</h3><p>Un cambio puede deberse a un objeto en movimiento, variabilidad, ruido o diferencias instrumentales. El mapa diferencial ayuda a localizarlo, pero no confirma un planeta.</p><button class="text-link" data-goto="academy">Aprender a identificar &rarr;</button></div></div>
+          <div class="science-disclaimer"><span>ⓘ</span> <strong>Importante:</strong> En modo IRSA se usan recortes FITS reales. La comparación es exploratoria; el filtro LVF, las banderas de calidad y la respuesta instrumental requieren verificación antes de cualquier conclusión científica.</div>
+        </section>
+
+        <!-- DETECTOR -->
+        <section id="view-detection" class="view" aria-label="Detector de cambios">
+          <div class="page-title-row"><div><div class="page-eyebrow"><span class="eyebrow-line"></span> ESPACIO DE TRABAJO / 02</div><h1 class="page-title">Revisa <span>las diferencias.</span></h1><p class="page-subtitle">Localiza picos residuales y comprueba por qué una señal no es un descubrimiento.</p></div><div class="page-index">02 / 04</div></div>
+          <div class="detection-intro"><div class="detection-intro-inner"><span class="intro-symbol" aria-hidden="true">⌁</span><div><strong>Análisis exploratorio · no confirma planetas</strong><p>El umbral σ es heurístico. Para investigar un objeto hacen falta controles instrumentales, más épocas y validación independiente.</p></div></div><button id="detectBtn" class="btn btn-primary">Ir al explorador ↗</button></div>
+          <div class="detection-threshold"><div class="threshold-heading"><label for="thresholdRange">SENSIBILIDAD DEL ANÁLISIS · UMBRAL</label><output id="thresholdValue" for="thresholdRange">5.00 &#963;</output></div><input id="thresholdRange" type="range" min="2" max="10" step="0.25" value="5" aria-label="Umbral de detección de candidatos"><small>Arrastra el control para cambiar el umbral. Al soltarlo se recalculan los picos, si ya comparaste dos épocas.</small></div>
+          <section class="activity-card" id="detectActivity" hidden aria-label="Estado del análisis"><div class="activity-head"><span class="activity-orbit" aria-hidden="true"><i></i></span><div class="activity-heading"><span class="activity-kicker">REVISIÓN · ANÁLISIS EXPLORATORIO</span><h3 class="activity-title" aria-live="polite">Preparando análisis</h3></div><strong class="activity-value" aria-hidden="true">EN CURSO</strong></div><p class="activity-detail">Esperando el resultado del análisis.</p><div class="activity-track" role="progressbar" aria-label="Avance del análisis" aria-valuemin="0" aria-valuemax="100"><span class="activity-fill"></span></div><div class="activity-footer"><span>El porcentaje solo aparece al recibir una respuesta.</span><span class="activity-step">Sin estimación de tiempo</span></div></section>
+          <div class="detection-grid"><div class="panel detection-image-panel"><div class="panel-heading"><div><span class="panel-overline">VISUALIZACIÓN DIFERENCIAL</span><h3>Mapa de residuales</h3></div><span class="pill pill-orange">CIENCIA EXPLORATORIA</span></div><div class="detection-stage"><img id="detectionImage" alt="Mapa de diferencias real o sintético"><div class="detection-markers" id="detectionMarkers"></div><div class="detection-stage-empty" id="detectionEmpty">Prepara una comparación para mostrar las diferencias.</div><span class="detection-stage-caption">CIAN = DISMINUYE &nbsp;&nbsp; NARANJA = AUMENTA</span></div><div class="detection-legend"><span>− señal desaparecida</span><span>+ señal aparecida</span></div></div><div class="panel candidate-panel"><div class="panel-heading"><div><span class="panel-overline">HALLAZGOS PRELIMINARES</span><h3>Señales para revisión</h3></div><div class="candidate-heading-actions"><button class="btn btn-outline" id="exportBtn" disabled>↓ CSV</button><strong id="candidateCount" class="candidate-count">00</strong></div></div><div id="candidateList" class="candidate-list"><div class="candidate-empty"><span>⌕</span><strong>Sin análisis todavía</strong><p>Selecciona dos observaciones en Explorador y ejecuta el análisis.</p><button class="btn btn-outline" data-goto="explorer">Ir al explorador →</button></div></div><div class="candidate-insight" id="candidateInsight" role="status" aria-live="polite">Selecciona un resultado para revisar su posición en el mapa. No identifica un objeto.</div></div></div>
+          <div class="science-disclaimer"><span>ⓘ</span> <strong>Alcance científico:</strong> la puntuación σ es una medida heurística de contraste frente al ruido robusto, no una probabilidad de que el objeto sea un planeta. Para confirmar se requieren varias épocas, controles fotométricos, identificación de fuentes conocidas y ajuste orbital.</div>
+        </section>
+
+        <!-- ACADEMY -->
+        <section id="view-academy" class="view" aria-label="Academia espacial">
+          <div class="page-title-row"><div><div class="page-eyebrow"><span class="eyebrow-line"></span> APRENDER HACIENDO / 03</div><h1 class="page-title">Academia <span>espacial.</span></h1><p class="page-subtitle">De observador curioso a investigador. Aprende, experimenta y demuestra lo que sabes.</p></div><div class="page-index">03 / 04</div></div>
+          <div class="academy-banner"><span class="academy-banner-icon">✳</span><div><span class="panel-overline">TU PROGRESO EN LA MISIÓN</span><h2>El conocimiento es tu mejor telescopio.</h2><p>Completa las lecciones y supera la misión de evaluación.</p></div><div class="academy-progress"><strong id="progressNum">0/3</strong><span>LECCIONES COMPLETADAS</span><div class="progress-track"><span id="progressFill"></span></div></div></div>
+          <div class="section-heading"><div><p class="overline">EXPLORA Y APRENDE</p><h2>Rutas de aprendizaje</h2></div></div><div class="lesson-grid" id="lessons"></div>
+          <div class="academy-bottom"><div class="panel quiz-panel"><div class="panel-heading"><div><span class="panel-overline">EXAMEN DE LA MISIÓN</span><h3>¿Puedes pensar como un astrónomo?</h3></div><span class="quiz-status" id="quizBadge">5 PREGUNTAS</span></div><div id="quizRoot" class="quiz-content"><p>Responde cinco preguntas y desbloquea tu insignia de investigador.</p><button class="btn btn-primary" id="quizStart">Empezar misión →</button></div></div><div class="panel academy-sidecard"><div class="academy-card-orb"></div><span class="panel-overline">RETO FINAL</span><h3>Detective del universo</h3><p>Un punto luminoso se mueve. ¿Es un nuevo planeta o debemos hacer más ciencia?</p><button class="btn btn-outline" data-goto="detection">Examinar cambios →</button></div></div>
+        </section>
+
+        <!-- SOURCES -->
+        <section id="view-sources" class="view" aria-label="Fuentes científicas">
+          <div class="page-title-row"><div><div class="page-eyebrow"><span class="eyebrow-line"></span> TRANSPARENCIA Y CIENCIA ABIERTA / 04</div><h1 class="page-title">Datos y <span>metodología.</span></h1><p class="page-subtitle">Conoce qué es real, qué es simulado y qué puede concluir nuestro análisis.</p></div><div class="page-index">04 / 04</div></div>
+          <div class="source-banner"><span class="source-banner-icon">✦</span><div><strong>Datos abiertos. Método transparente.</strong><p>SPHEREx es una misión NASA. Gaia DR3 pertenece a ESA. Todas las simulaciones están identificadas y nunca se presentan como observaciones reales.</p></div></div>
+          <div class="section-heading"><div><p class="overline">BIBLIOTECA CIENTÍFICA</p><h2>Fuentes oficiales</h2></div></div><div class="source-grid" id="sourcesList"></div>
+          <div class="section-heading"><div><p class="overline">CÓMO FUNCIONA</p><h2>Metodología y límites</h2></div></div>
+          <div class="method-grid"><div class="panel method-card"><span>01 / REGISTRO</span><h3>Alineación WCS</h3><p>Los archivos FITS reales se alinean usando coordenadas celestes WCS para comparar la misma porción del cielo.</p></div><div class="panel method-card"><span>02 / CAMBIOS</span><h3>Restas robustas</h3><p>Se retira un fondo espacial suavizado y se comparan los residuos para identificar señales positivas y negativas.</p></div><div class="panel method-card"><span>03 / REVISIÓN</span><h3>Umbral ajustable</h3><p>Se seleccionan picos locales con un umbral heurístico inicial de 5σ y posibles pares desplazados. Son señales a revisar, no hallazgos confirmados.</p></div></div>
+          <div class="limitations"><span>⚠</span><div><strong>Limitaciones importantes</strong><p>El motor no comprueba completamente variaciones del LVF por píxel, respuesta instrumental, máscaras FLAGS, varianzas, coincidencias automáticas contra todos los catálogos ni trayectorias orbitales. No debe utilizarse para declarar el descubrimiento de Planeta Nueve.</p></div></div>
+          <footer class="footer">PLANET X EXPLORER <span>·</span> Proyecto educativo independiente <span>·</span> Fuentes: NASA/IPAC IRSA y ESA Gaia <span>·</span> No afiliado oficialmente a NASA</footer>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script src="/static/js/api.js?v=20261115-reliable" defer></script>
+  <script src="/static/js/activity.js?v=20261116" defer></script>
+  <script src="/static/js/orbit3d.js?v=20261115" defer></script>
+  <script src="/static/js/main.js?v=20261115-gallery" defer></script>
+  <script src="/static/js/explorer.js?v=20261115-reliable" defer></script>
+  <script src="/static/js/detection.js?v=20261115-reliable" defer></script>
+  <script src="/static/js/academy.js?v=20261115-reliable" defer></script>
+</body>
+</html>

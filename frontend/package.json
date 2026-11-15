@@ -1,0 +1,13 @@
+{
+  "name": "planet-x-explorer-ui-qa",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Solo herramientas opcionales para comprobar la interfaz; la aplicación no requiere build.",
+  "scripts": {
+    "qa:ui": "node qa/smoke.cjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@playwright/test": "1.65.1"
+  }
+}

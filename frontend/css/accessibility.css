@@ -1,0 +1,30 @@
+/* Readability and keyboard navigation corrections for the final light theme. */
+.crumb-root, .overline, .metric-overline, .page-index, .footer { color: #405b6a; }
+.workflow-step .step-index, .source-id, .method-card > span { color: #006579; }
+.workflow-note p, .stat-card p, .stat-small { color: #405968; }
+.query-mode > span, .comparison-definition, .versus-label { color: #405968; }
+.segment:not(.active) { color: #3e5868; }
+.detection-threshold small, .field-rows > div span, .gaia-widget p,
+.candidate-empty p, .quiz-content p { color: #405968; }
+.figure-heading .panel-overline { color: #b1ccd9; }
+.science-disclaimer strong { color: #193643; }
+.candidate-count, .quiz-status { color: #24546a; }
+.quiz-progress { color: #24546a; }
+.candidate-item .candidate-rank { color: #24546a; }
+.candidate-item .snr { color: #995031; }
+.candidate-item p, .candidate-item small { color: #405968; }
+.candidate-item:hover, .candidate-item.active { background: #e4eff2; }
+.preset { min-height: 34px; padding-block: 7px; }
+:where(a, button, input, select):focus-visible {
+  outline: 3px solid #075b73;
+  outline-offset: 3px;
+}
+.sidebar :where(a, button):focus-visible, .overview-hero button:focus-visible,
+.science-figure button:focus-visible, .detection-intro button:focus-visible {
+  outline-color: #cafa70;
+}
+@media (max-width: 800px) {
+  /* Off-canvas navigation must not be focusable while closed. */
+  .sidebar:not(.open) { visibility: hidden; }
+  .sidebar.open { visibility: visible; }
+}
