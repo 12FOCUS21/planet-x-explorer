@@ -6,6 +6,8 @@
 
 **Para preparar un video:** [guía completa y guion escena por escena](docs/GUIA_COMPLETA_VIDEO.md).
 
+**Memoria profesional del proyecto:** [Word editable](docs/Planet_X_Explorer_Informe_Profesional_Mejorado.docx) · [PDF](docs/Planet_X_Explorer_Informe_Profesional_Mejorado.pdf). Incluye equipo, objetivos, metodología, resultados y declaración de uso de IA.
+
 **Plataforma web educativa para explorar y comparar observaciones infrarrojas de SPHEREx (NASA/IPAC IRSA), con modo demostración sin Internet.**
 
 > ⚠️ El Planeta Nueve / Planeta X es una hipótesis, no un descubrimiento confirmado. Esta aplicación no puede confirmar un planeta. La demo es completamente SINTÉTICA; el modo IRSA es la única vía de observaciones SPHEREx auténticas.
