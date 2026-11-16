@@ -8,7 +8,8 @@ window.PX = {
     const timer=setTimeout(()=>controller.abort(),140000);
     let response,data;
     try {
-      response=await fetch(url,{...options,signal:controller.signal});
+      // Keep machine workflow messages canonical; translate only their presentation.
+      response=await fetch(url,{...options,headers:{...options.headers,'Accept-Language':'es'},signal:controller.signal});
       data=await response.json();
     } catch(e) {
       throw new Error(e.name==='AbortError'?'La consulta tardó demasiado. Reintenta; los recortes completos quedan en caché.':'No se pudo comunicar con el servidor. Comprueba la conexión; si es local, revisa Python.');
@@ -20,7 +21,7 @@ window.PX = {
     return data;
   },
   $(id){return document.getElementById(id)},
-  escape(value){return String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));},
+  escape(value){return String(this.t?this.t(String(value??'')):value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));},
   toast(message,isError=false){const el=this.$('toast');el.textContent=message;el.className='toast visible'+(isError?' error':'');clearTimeout(this._toastTimer);this._toastTimer=setTimeout(()=>el.classList.remove('visible'),6500);},
   busy(button,yes,label){if(!button)return;button.disabled=yes;button.classList.toggle('busy',yes);if(!button.dataset.original)button.dataset.original=button.innerHTML;button.innerHTML=yes?(label||'Procesando...'):button.dataset.original;},
   goto(view){

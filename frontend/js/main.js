@@ -43,6 +43,7 @@
     }});
   }
   async function init(){
+    await PX.i18n.init();
     bindNavigation();skyStars();window.addEventListener('resize',()=>{clearTimeout(PX._resizer);PX._resizer=setTimeout(skyStars,140)});
     try {const health=await PX.get('/api/health');PX.$('apiStatus').textContent=health.status==='ok'?'API DISPONIBLE':'API NO DISPONIBLE';}
     catch(e) {PX.$('apiStatus').textContent='SIN CONEXIÓN';PX.toast(e.message,true);}

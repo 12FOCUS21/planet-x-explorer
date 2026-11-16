@@ -72,9 +72,9 @@
     const columns=['id','classification','snr','x','y','previous_x','previous_y','shift_px','note'];
     const quote=x=>'"'+String(x??'').replace(/"/g,'""')+'"';
     const disclaimer='# Planet X Explorer — señales preliminares, NO descubrimientos confirmados';
-    const table=[disclaimer,'# Origen: '+(c.meta.is_demo?'SIMULACIÓN SINTÉTICA':'NASA / IPAC IRSA (FITS reales)'),'# Fechas: '+c.first.date+' / '+c.second.date,columns.join(','),...d.candidates.map(row=>columns.map(key=>quote(row[key])).join(','))].join('\r\n');
+    const table=['# '+PX.t(disclaimer.slice(2)),'# '+PX.t('Origen:')+' '+PX.t(c.meta.is_demo?'SIMULACIÓN SINTÉTICA':'NASA / IPAC IRSA (FITS reales)'),'# '+PX.t('Fechas:')+' '+c.first.date+' / '+c.second.date,columns.join(','),...d.candidates.map(row=>columns.map(key=>quote(typeof row[key]==='string'?PX.t(row[key]):row[key])).join(','))].join('\r\n');
     const blob=new Blob(['\uFEFF'+table],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob);
-    const a=document.createElement('a');a.href=url;a.download='planetx_candidatos_'+(c.meta.is_demo?'DEMO':'IRSA')+'.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+    const a=document.createElement('a');a.href=url;a.download=(PX.i18n.language==='en'?'planetx_candidates_':'planetx_candidatos_')+(c.meta.is_demo?'DEMO':'IRSA')+'.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
   }
   function init(){PX.$('detectBtn').addEventListener('click',()=>detect());PX.$('exportBtn').addEventListener('click',exportCsv);
     PX.$('thresholdRange').addEventListener('change',()=>{if(PX.state.compare)detect(true);});}

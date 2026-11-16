@@ -6,7 +6,7 @@
  try{completed=JSON.parse(localStorage.getItem('px-learned')||'[]');if(!Array.isArray(completed))completed=[];}catch(e){completed=[];}
  function progress(){PX.$('progressNum').textContent=completed.length+'/'+lessons.length;PX.$('progressFill').style.width=(lessons.length?(completed.length/lessons.length*100):0)+'%';}
  function renderLessons(){
-   PX.$('lessons').innerHTML=lessons.map((l,i)=>`<div class="lesson-card ${completed.includes(l.id)?'completed':''}"><div class="lesson-card-top"><span>LECCIÓN ${PX.escape(l.id)}</span><span>${PX.escape(l.length)}</span></div><div class="lesson-card-icon">${['◎','✺','⌁'][i%3]}</div><h3>${PX.escape(l.title)}</h3><p>${PX.escape(l.tag)} · ${PX.escape(l.text.slice(0,105))}...</p><button data-lesson="${i}">${completed.includes(l.id)?'Revisar lección':'Comenzar lección'} →</button></div>`).join('');
+   PX.$('lessons').innerHTML=lessons.map((l,i)=>`<div class="lesson-card ${completed.includes(l.id)?'completed':''}"><div class="lesson-card-top"><span>LECCIÓN ${PX.escape(l.id)}</span><span>${PX.escape(l.length)}</span></div><div class="lesson-card-icon">${['◎','✺','⌁'][i%3]}</div><h3>${PX.escape(l.title)}</h3><p>${PX.escape(l.tag)} · ${PX.escape(PX.t(l.text).slice(0,105))}...</p><button data-lesson="${i}">${completed.includes(l.id)?'Revisar lección':'Comenzar lección'} →</button></div>`).join('');
    PX.$('lessons').querySelectorAll('[data-lesson]').forEach(b=>b.addEventListener('click',()=>openLesson(Number(b.dataset.lesson))));progress();
  }
   function openLesson(i){
@@ -54,6 +54,7 @@
  }
  function startQuiz(){if(!questions.length){PX.toast('No hay preguntas disponibles.',true);return;}current=0;score=0;questionScreen();}
  async function init(){
+   document.addEventListener('px:languagechange',()=>{if(lessons.length)renderLessons();});
    PX.$('quizStart').addEventListener('click',startQuiz);
    try{const data=await PX.get('/api/academy');lessons=data.lessons;questions=data.questions;renderLessons();}
    catch(e){PX.$('lessons').textContent='No se pudieron cargar lecciones: '+e.message;}

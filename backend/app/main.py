@@ -11,12 +11,14 @@ from .api import routes_explorer,routes_observations,routes_detection,routes_edu
 from .services.catalog_service import SOURCES
 from .services.gaia_service import gaia_catalog
 from .security import PublicSettings,apply_security
+from .localization import LanguageMiddleware
 
 public=PublicSettings.from_env()
 app=FastAPI(title='Planet X Explorer',description='Exploración SPHEREx, detección preliminar y academia científica',version='1.0.0',
             docs_url=None if public.enabled else '/docs',redoc_url=None if public.enabled else '/redoc',
             openapi_url=None if public.enabled else '/openapi.json')
 apply_security(app,public)
+app.add_middleware(LanguageMiddleware)
 for router in (routes_explorer.router,routes_observations.router,routes_detection.router,routes_education.router):
     app.include_router(router)
 app.mount('/static',StaticFiles(directory=str(FRONTEND)),name='static')
